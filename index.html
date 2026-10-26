@@ -249,9 +249,9 @@ function fabT(){fab.classList.toggle('off',scrollY<560||inTool)}
 new IntersectionObserver(es=>{inTool=es[0].isIntersecting;fabT()}).observe(q('#tool'));
 addEventListener('scroll',fabT,{passive:true});
 const lang=q('#lang');
-function setL(l){L=l;document.documentElement.lang=l==='en'?'en':'ms';els.forEach(e=>e.innerHTML=l==='en'?e.dataset.en:e.dataset.ms);alts.forEach(e=>e.alt=l==='en'?e.dataset.enAlt:e.dataset.msAlt);phs.forEach(e=>e.placeholder=l==='en'?e.dataset.enPh:e.dataset.msPh);lang.textContent=l==='en'?'BM':'EN';lang.setAttribute('aria-label',l==='en'?'Tukar ke Bahasa Melayu':'Switch to English');upd();try{localStorage.setItem('L',l)}catch(e){}}
+function setL(l){L=l;document.documentElement.lang=l==='en'?'en':'ms';els.forEach(e=>e.innerHTML=l==='en'?e.dataset.en:e.dataset.ms);alts.forEach(e=>e.alt=l==='en'?e.dataset.enAlt:e.dataset.msAlt);phs.forEach(e=>e.placeholder=l==='en'?e.dataset.enPh:e.dataset.msPh);lang.textContent=l==='en'?'BM':'EN';lang.setAttribute('aria-label',l==='en'?'Tukar ke Bahasa Melayu':'Switch to English');upd();try{localStorage.setItem('L'+location.pathname,l)}catch(e){}}
 lang.addEventListener('click',()=>setL(L==='en'?'ms':'en'));
-try{if(localStorage.getItem('L')==='en')setL('en');else upd()}catch(e){upd()}
+try{if(localStorage.getItem('L'+location.pathname)==='en')setL('en');else upd()}catch(e){upd()}
 </script>
 </body>
 </html>
